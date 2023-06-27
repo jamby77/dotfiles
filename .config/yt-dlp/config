@@ -1,0 +1,20 @@
+--restrict-filenames
+-P "~/Downloads/Videos/"
+-o "%(extractor)s/%(uploader)s/%(title)s_%(id)s.%(ext)s"
+-o "chapter:%(extractor)s/%(uploader)s/%(title)s_%(id)s/%(section_number)s-%(section_title)s.%(ext)s"
+--split-chapters
+--cookies-from-browser chrome
+--mark-watched
+-f (bestvideo[height>2160][vcodec^=av01]/bestvideo[height>2160][vcodec^=vp9]/bestvideo[height>1440][vcodec^=av01]/bestvideo[height>1440][vcodec^=vp9][fps>30]/bestvideo[height>1440][vcodec^=vp9]/bestvideo[height>1080][vcodec^=av01]/bestvideo[height>1080][vcodec^=vp9][fps>30]/bestvideo[height>1080][vcodec^=vp9]/bestvideo[height>720][vcodec^=av01]/bestvideo[height>720][vcodec^=vp9][fps>30]/bestvideo[height>720][vcodec^=vp9]/bestvideo[height>240][vcodec^=av01]/bestvideo[vcodec^=vp9][fps>30]/bestvideo[height>240][vcodec^=vp9]/best[height>240]/bestvideo[vcodec^=av01]/bestvideo[vcodec^=vp9]/bestvideo)+(bestaudio[asr=48000]/bestaudio)/bestaudio[ext=opus]/best
+--write-sub
+--sub-lang en,en-US,en-CA,en-GB,en-IE,enUS
+--merge-output-format mkv
+--embed-subs
+--user-agent "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+--add-metadata
+--concurrent-fragments 5
+--sleep-interval 1
+--max-sleep-interval 8
+--no-continue
+--no-overwrites
+--download-archive archive.log
