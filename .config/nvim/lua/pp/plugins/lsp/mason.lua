@@ -36,6 +36,12 @@ return {
 				"graphql",
 				"emmet_ls",
 				"prismals",
+				"jsonlint",
+				"jsonls",
+				"denols",
+				"astro",
+				"angularls",
+				"html",
 			},
 		})
 
