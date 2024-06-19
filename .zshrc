@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -99,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
   export EDITOR='code'
 fi
@@ -113,13 +111,16 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias sites="cd ~/Projects/"
-alias ll="exa --long --classify --grid --binary --header --git --group-directories-first"
+export COLUMNS=100
+alias ll="exa --color=always --long --classify -G --binary --git --group-directories-first --icons --no-time --no-user --no-permissions"
 alias la="exa --long --classify --grid --binary --header --git --group-directories-first --all"
 alias bu="brew update && brew upgrade --cask && brew upgrade && brew cleanup --prune 30"
 alias pn=pnpm
+alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
+alias baus="brew autoupdate stop"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -129,5 +130,25 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH=$HOME/bin:$PATH
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
+# pnpm
+export PNPM_HOME="/Users/pd/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
