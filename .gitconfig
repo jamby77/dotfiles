@@ -24,3 +24,5 @@
 [includeIf "gitdir:~/work/"]
     ; TODO: add some sort of differential for work, or other places
     path = .gitconfig.work
+[pull]
+	rebase = false
