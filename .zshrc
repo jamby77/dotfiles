@@ -73,7 +73,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$(brew --prefix)/share/zsh-syntax-highlighting/highlighters
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -115,8 +115,9 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias sites="cd ~/Projects/"
 export COLUMNS=100
-alias ll="exa --color=always --long --classify -G --binary --git --group-directories-first --icons --no-time --no-user --no-permissions"
-alias la="exa --long --classify --grid --binary --header --git --group-directories-first --all"
+# alias ll="eza --color=always -l -F -G -b --git --group-directories-first --icons=auto --no-time --no-user --no-permissions"
+alias ll="eza --long --classify --grid --binary --header --git --group-directories-first --no-user --no-permissions --icons --color"
+alias la="eza --long --classify --grid --binary --header --git --group-directories-first --all"
 alias bu="brew update && brew upgrade --cask && brew upgrade && brew cleanup --prune 30"
 alias pn=pnpm
 alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
@@ -125,25 +126,16 @@ alias baus="brew autoupdate stop"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH=$HOME/bin:$PATH
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
-# pnpm
-export PNPM_HOME="/Users/pd/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 if type brew &>/dev/null
 then
@@ -152,3 +144,8 @@ then
   autoload -Uz compinit
   compinit
 fi
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
