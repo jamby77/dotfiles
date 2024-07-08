@@ -16,5 +16,11 @@ if [ "$system_type" = "Darwin" ]; then
     echo "Updating homebrew bundle"
     brew bundle --file "$HOME/Brewfile"
   fi
+  
+  if ! command -v node >/dev/null 2>&1; then
+    echo "Installing node.js"
+    nvm install --lts
+  fi
+
 
 fi

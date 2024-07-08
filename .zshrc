@@ -111,6 +111,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias vim="nvim"
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias sites="cd ~/Projects/"
@@ -120,6 +121,7 @@ alias ll="eza --long --classify --grid --binary --header --git --group-directori
 alias la="eza --long --classify --grid --binary --header --git --group-directories-first --all"
 alias bu="brew update && brew upgrade --cask && brew upgrade && brew cleanup --prune 30"
 alias pn=pnpm
+alias pnx="pnpm dlx"
 alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
 alias baus="brew autoupdate stop"
 
