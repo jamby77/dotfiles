@@ -1,6 +1,6 @@
 [user]
-	name = Petar Dzhambazov
-	email = jamby77@gmail.com
+	name = pd-redis
+	email = petar.dzhambazov@redis.com
 [core]
     editor = nvim
 	autocrlf = input
@@ -26,3 +26,8 @@
     path = .gitconfig.work
 [pull]
 	rebase = false
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

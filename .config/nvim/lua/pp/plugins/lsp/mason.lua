@@ -36,7 +36,6 @@ return {
 				"graphql",
 				"emmet_ls",
 				"prismals",
-				"jsonlint",
 				"jsonls",
 				"denols",
 				"astro",
@@ -47,6 +46,7 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
+				"jsonlint",
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"eslint_d", -- js linter
