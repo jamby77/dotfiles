@@ -118,8 +118,8 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias sites="cd ~/Projects/"
 export COLUMNS=100
 # alias ll="eza --color=always -l -F -G -b --git --group-directories-first --icons=auto --no-time --no-user --no-permissions"
-alias ll="eza --long --classify --grid --binary --header --git --group-directories-first --no-user --no-permissions --icons --color"
-alias la="eza --long --classify --grid --binary --header --git --group-directories-first --all"
+alias ll="eza -l -F --grid --binary --header --git --group-directories-first --no-user --no-permissions --no-time --icons --color --total-size"
+alias la="eza -l -F --grid --binary --header --git --group-directories-first --all --total-size"
 alias bu="brew update && brew upgrade --cask && brew upgrade && brew cleanup --prune 30"
 alias pn=pnpm
 alias pnx="pnpm dlx"
@@ -154,3 +154,11 @@ export NVM_DIR="$HOME/.nvm"
 
 
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+# pnpm
+export PNPM_HOME="/Users/petar.dzhambazov/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
