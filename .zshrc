@@ -125,6 +125,7 @@ alias pn=pnpm
 alias pnx="pnpm dlx"
 alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
 alias baus="brew autoupdate stop"
+alias git.mypet.redis="git config core.sshCommand 'ssh -i ~/.ssh/2_id_ed25519'"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
