@@ -1,0 +1,29 @@
+font-size = 18
+theme = rose-pine
+
+background = #0B1215
+background-opacity = 0.90
+background-blur-radius = 20
+bold-is-bright = true
+
+# window settings
+macos-titlebar-style = hidden
+window-decoration = true
+window-theme = auto
+window-padding-color = background
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = false
+window-colorspace = "display-p3"
+adjust-cell-height = 10%
+
+cursor-color = #FFA500
+font-feature = +liga
+cursor-style = block
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+copy-on-select = clipboard
+shell-integration-features = cursor,sudo,no-title
+
