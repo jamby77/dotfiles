@@ -127,6 +127,8 @@ alias pnx="pnpm dlx"
 alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
 alias baus="brew autoupdate stop"
 alias git.mypet.redis="git config core.sshCommand 'ssh -i ~/.ssh/2_id_ed25519'"
+alias k="kubectl"
+alias tf="terraform"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -182,9 +184,23 @@ load-nvmrc
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 # pnpm
-export PNPM_HOME="/Users/petar.dzhambazov/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+eval "$(direnv hook zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+~
+~
