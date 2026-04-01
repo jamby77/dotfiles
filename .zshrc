@@ -115,9 +115,10 @@ alias sites="cd ~/Projects/"
 export COLUMNS=100
 # alias ll="eza --color=always -l -F -G -b --git --group-directories-first --icons=auto --no-time --no-user --no-permissions"
 alias lt="eza -l -F --grid --binary --header --git --group-directories-first --no-user --no-permissions --no-time --icons --color --total-size"
-alias ll="eza -l -F --grid --binary --header --git --group-directories-first --no-user --no-permissions --no-time --icons --color"
+alias ll="eza --icons --color -l -F --grid --binary --header --git --group-directories-first --no-user --no-permissions --no-time"
 alias la="eza -l -F --grid --binary --header --git --group-directories-first --all --total-size"
 alias bu="brew update && brew upgrade --cask && brew upgrade && brew cleanup --prune 30"
+alias бу="bu"
 alias pn=pnpm
 alias pnx="pnpm dlx"
 alias bau="brew autoupdate start 3600 --upgrade --greedy --cleanup --immediate"
@@ -125,6 +126,7 @@ alias baus="brew autoupdate stop"
 alias git.mypet.redis="git config core.sshCommand 'ssh -i ~/.ssh/2_id_ed25519'"
 alias k="kubectl"
 alias tf="terraform"
+alias yt="yt-dlp"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,7 +134,7 @@ alias tf="terraform"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 
@@ -198,3 +200,14 @@ if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+
+export CONTEXT7_API_KEY=ctx7sk-a88aef02-ca52-4c68-afb8-b5295d1e827e
+
+# Added by Windsurf
+export PATH="/Users/pd/.codeium/windsurf/bin:$PATH"
+
+# opencode
+export PATH=/Users/pd/.opencode/bin:$PATH

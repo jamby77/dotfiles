@@ -1,20 +1,41 @@
---restrict-filenames
+--windows-filenames
+# --restrict-filenames
 -P "~/Downloads/Videos/"
--o "%(extractor)s/%(uploader)s/%(title)s_%(id)s.%(ext)s"
--o "chapter:%(extractor)s/%(uploader)s/%(title)s_%(id)s/%(section_number)s-%(section_title)s.%(ext)s"
---split-chapters
---cookies-from-browser chrome
+-o "%(extractor)s/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s_%(id)s.%(ext)s"
+
 --mark-watched
--f "bv*+ba/b"
+
+-S "vcodec:avc1,fps,res"
+# Prefer stable, high-quality AVC first; VP9 second; avoid AV1
+# -f "bestvideo[codec^=avc1][height>=720]+bestaudio[ext=m4a]/bestvideo[codec^=vp09][height>=720]+bestaudio/bestvideo+bestaudio/best"
+# -f "bestvideo[codec^=avc1]+bestaudio[ext=m4a]/bestvideo[codec^=vp09]+bestaudio/best/bv+ba/best"
+-f "bv*[vcodec^=avc1][height>=720]+ba[acodec^=mp4a]/bv*[vcodec^=vp09][height>=720]+ba[acodec^=mp4a]/b[height>=720]"
+# -f "bestvideo[codec^=avc1][height>=720]+bestaudio[ext=m4a]/best/bv*+ba/best"
+# -f "bv*+ba/b"
+
+# Subtitles
 --write-sub
 --sub-lang en,en-US,en-CA,en-GB,en-IE,enUS
---merge-output-format mkv
 --embed-subs
---user-agent "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+
+# Container preference (MP4 when possible)
+--merge-output-format mp4
+
+# Metadata
 --add-metadata
---concurrent-fragments 5
+
+# Reliable fragment download (prevents dropped/corrupted frames)
+--concurrent-fragments 1
+
+# Download pacing
 --sleep-interval 1
 --max-sleep-interval 8
+
+# Safety / file handling
 --no-continue
 --no-overwrites
---download-archive archive.log
+
+--download-archive "/Users/pd/Library/CloudStorage/Dropbox/yt-dlp/mba/archive.log"
+
+--remux-video mp4
+--fixup force

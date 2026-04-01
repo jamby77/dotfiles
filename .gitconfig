@@ -1,6 +1,7 @@
 [user]
 	name = jamby77
 	email = jamby77@gmail.com
+	signingkey = /Users/pd/.ssh/id_ed25519.pub
 [core]
     editor = nvim
 	autocrlf = input
@@ -31,3 +32,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = /Users/pd/.ssh/allowed_signers

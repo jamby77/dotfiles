@@ -1,0 +1,10 @@
+{
+  "version": 0.1,
+  "workspaces": [
+    {
+      "id": "d6416ddd-f5d3-4dc5-a761-318240e1896b",
+      "name": "test",
+      "path": "/Users/pd/Projects/test"
+    }
+  ]
+}
