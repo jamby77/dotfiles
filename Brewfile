@@ -38,13 +38,5 @@ cask "font-meslo-lg-nerd-font"
 cask "google-chrome"
 cask "iina"
 cask "raycast"
-# Quick Look plugin for JSON files
-cask "quicklook-json"
-# Quick Look generator for Markdown files
-cask "qlmarkdown"
-# Quick Look plug-in that renders source code with syntax highlighting
-cask "qlcolorcode"
-# Display image info and preview unsupported formats in QuickLook
-cask "qlimagesize"
-# Team communication and collaboration software
+# communication and collaboration software
 cask "slack"
